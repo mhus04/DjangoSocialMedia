@@ -1,6 +1,5 @@
 <h1>Dependencies</h1>
-This document is intended for unexperienced users
-Ensure that you have installed all the required dependencies before you attempt to run this application
+This document is intended for unexperienced users. Ensure that you have installed all the required dependencies before you attempt to run this application,
 
 <br>They are as followed:
 <ul>
