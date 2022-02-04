@@ -1,33 +1,30 @@
 {% extends 'homepage/base.html' %}
-
+{% load static%}
 {% block content %}
-    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-        <div class="row align-items-center g-lg-5 py-5">
-          <div class="col-lg-7 text-center text-lg-start">
-            <h1 class = "fw-bold">Ophidia - Homepage</h1>
-            <h1 class="display-4 fw-bold lh-1 mb-3">Sign Up</h1>
-            <p class="col-lg-10 fs-4">Ophidia is a social networking web application made with HTML, CSS, Javascript, the Bootstrap framework and Django to serve as Mustaq Hussain's artefact for his Extended Project Qualification. Please sign up if you have done so yet :)</p>
-          </div>
-          <div class="col-md-10 mx-auto col-lg-5">
-            <form class="p-4 p-md-5 border rounded-3 bg-light">
-              <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-              </div>
-              <div class="checkbox mb-3">
-                <label>
-                  <input type="checkbox" value="remember-me"> Remember me
-                </label>
-              </div>
-              <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-              <hr class="my-4">
-              <small class="text-muted">Have an account? Sign in here</small>
-            </form>
-          </div>
-        </div>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style = "min-height: 0;">
+    <header class="mb-auto">
+      <div>
+        <img class="float-md-start mb-0 navbarlogo" src = "{% static 'images/logo.png' %}"></img>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="https://github.com/mhus04/DjangoSocialMedia">GitHub</a>
+        </nav>
       </div>
+    </header>
+    <video class = "backgroundvideo" src = "{% static 'videos/snake.mp4' %}" autoplay muted loop></video>
+
+    <div class = "overlay">
+      <main class="px-3">
+        <h1>Ophidia</h1>
+        <p class="lead">Ophidia is a social networking web application made with HTML, CSS, Javascript, the Bootstrap framework and Django to serve as Mustaq Hussain's artefact for his Extended Project Qualification. Please sign up or log in if you have done so yet :)</p>
+        <p class="lead">
+          <a href="accounts/login" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black" style = "margin-right:5px">Log In</a>
+          <a href="accounts/signup" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black">Sign Up</a>
+        </p>
+      </main>
+    
+    </div>
+  </div>
+    
+  
 {% endblock content %}
