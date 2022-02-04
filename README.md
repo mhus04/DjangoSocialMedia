@@ -10,7 +10,7 @@ This document is intended for inexperienced users. Ensure that you have installe
   <li>Django-Crispy-Forms - https://django-crispy-forms.readthedocs.io/en/latest/install.html</li>
 </ul>
 
-<h1>Intialising a Local Testing Server</h1>
+<h1>Initiating a Local Testing Server</h1>
 After installing the following dependencies, clone the repository using by entering this command in the command prompt/terminal:
 <br>
 
