@@ -3,7 +3,7 @@ This document is intended for inexperienced users. Ensure that you have installe
 
 <br>They are as followed:
 <ul>
-  <li>Python - https://www.python.org/downloads/</li> (Ensure you enable 'Add Python to PATH' during the installation process
+  <li>Python - https://www.python.org/downloads/</li> (Ensure you enable 'Add Python to PATH' during the installation process)
   <li>Git - https://git-scm.com/downloads</li>
   <li>Django - https://docs.djangoproject.com/en/4.0/topics/install/</li>
   <li>Django-Allauth - https://django-allauth.readthedocs.io/en/latest/installation.html</li>
