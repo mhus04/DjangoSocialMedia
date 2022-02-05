@@ -8,6 +8,7 @@ This document is intended for inexperienced users. Ensure that you have installe
   <li>Django - https://docs.djangoproject.com/en/4.0/topics/install/</li>
   <li>Django-Allauth - https://django-allauth.readthedocs.io/en/latest/installation.html</li>
   <li>Django-Crispy-Forms - https://django-crispy-forms.readthedocs.io/en/latest/install.html</li>
+  <li>Crispy-Bootstrap5 - https://github.com/django-crispy-forms/crispy-bootstrap5</li>
 </ul>
 
 <h1>Initiating a Local Testing Server</h1>
