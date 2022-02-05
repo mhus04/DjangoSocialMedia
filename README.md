@@ -17,8 +17,7 @@ After installing the following dependencies, clone the repository using by enter
 ```$ git clone https://github.com/mhus04/DjangoSocialMedia.git```
 
 Enter the 'Ophidia' directory using the command prompt/terminal using these commands:
-<br>```cd DjangoSocialMedia```
-<br>```cd Ophidia```
+<br>```cd DjangoSocialMedia/Ophidia```
 
 
 Enter this command in the command prompt/terminal:
