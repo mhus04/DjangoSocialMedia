@@ -1,10 +1,15 @@
 {% extends 'homepage/base.html' %}
 {% load static%}
 {% block content %}
+{% load account %}
+{% load i18n %}
+{% user_display user as name %}
   <video class = "bgvid" src = "{% static 'videos/snake.mp4' %}" autoplay muted loop></video>
   <body class = "text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style = "min-height: 0;">
       <header class="mb-auto">
+        {% if user.is_authenticated %}
+        {% else %}
         <div>
           <img class="float-md-start mb-0 navbarlogo" src = "{% static 'images/logo.png' %}"></img>
           <nav class="nav nav-masthead justify-content-center float-md-end">
@@ -13,17 +18,27 @@
             <a class="nav-link" href="https://www.overleaf.com/read/qrfnjbtpzmzh">EPQ</a>
           </nav>
         </div>
+        {% endif %}
       </header>
       
 
       <div class = "overlay">
         <main class="px-3">
+        {% if user.is_authenticated %}
+         <h1> Welcome to Ophidia, {{ name }}</h1>
+         <p class = "lead">Be sure to check out the public GitHub repository for this project and my EPQ report and scroll down for more :)</p>
+         <p class="lead">
+          <a href="https://github.com/mhus04/DjangoSocialMedia" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black" style = "margin-right:5px">GitHub Repository</a>
+          <a href="https://www.overleaf.com/read/qrfnjbtpzmzh" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black">EPQ Report</a>
+       </p>
+        {% else %}
          <h1>Ophidia</h1>
-         <p class="lead">Ophidia is a social networking web application made with HTML, CSS, Javascript, the Bootstrap framework and Django to serve as Mustaq Hussain's artefact for his Extended Project Qualification. Please sign up or log in if you have done so yet :)</p>
+         <p class="lead">Ophidia is a social networking web application made with Django to serve as Mustaq Hussain's artefact for his Extended Project Qualification. Please sign up or log in if you have done so yet :)</p>
          <p class="lead">
             <a href="accounts/login" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black" style = "margin-right:5px">Log In</a>
             <a href="accounts/signup" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black">Sign Up</a>
-          </p>
+         </p>
+        {% endif %}
        </main>
     
      </div>

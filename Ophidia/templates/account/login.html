@@ -8,7 +8,7 @@
 <div class="row justify-content-center" style = "margin-top: 12%;">
   <div class = "col-md-6 col-sm-12">
   <img src = "{% static 'images/logo.png' %}" class = "authenticationlogo"></img>
-  <h1 class = "textcentre">{% trans "Sign In" %}</h1>
+  <h1 style = "text-align: center;">{% trans "Sign In" %}</h1>
 
     {% get_providers as socialaccount_providers %}
 
@@ -30,7 +30,7 @@
     {% include "socialaccount/snippets/login_extra.html" %}
 
     {% else %}
-    <p class = "textcentre">{% blocktrans %}If you have not created an account yet, then please
+    <p style = "text-align: center;">{% blocktrans %}If you have not created an account yet, then please
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
     {% endif %}
     <form class="login" method="POST" action="{% url 'account_login' %}">

@@ -10,9 +10,9 @@
 <div class="row justify-content-center" style="margin-top: 10%;">
   <div class="col-md-6 col-sm-12">
     <img src = "{% static 'images/logo.png' %}" class = "authenticationlogo"></img>
-    <h1 class = "textcentre">{% trans "Sign Up" %}</h1>
+    <h1 style = "text-align: center;">{% trans "Sign Up" %}</h1>
 
-    <p class = "textcentre">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+    <p style = "text-align: center;">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
       <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
         {{ form|crispy }}
