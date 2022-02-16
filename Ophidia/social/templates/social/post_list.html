@@ -24,7 +24,14 @@
     {% for post in post_list %}
     <div class = "row justify-content-center mt-3">
         <div class = "col-md-5 col-sm-23 border-bottom">
-            <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p> 
+            <p><strong>{{ post.author }}</strong> {{ post.created_on }}<br>
+                {% if request.user == post.author %}
+                    <a class="fas fa-edit" href = "{% url 'post-edit' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
+                    <a class="fas fa-trash" href = "{% url 'post-delete' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
+                {% endif %}
+                    <a class = "fas fa-comment" href = "{% url 'post-detail' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
+            </p> 
+            
             <p>{{ post.body }}</p>
         </div>
     </div>

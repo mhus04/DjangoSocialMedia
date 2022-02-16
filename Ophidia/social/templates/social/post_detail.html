@@ -1,0 +1,43 @@
+{% extends 'homepage/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class = "container">
+    <div class = "row mt-5">
+        <div class = "col-md-5 col-sm-6">
+            <a class = "btn btn-outline-primary" href = "{% url 'post-list' %}">Back to Feed</a>
+        </div>
+    </div>
+
+    <div class = "row justify-content-center mt-3">
+        <div class = "col-md-5 col-sm-23 border-bottom">
+            <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p> 
+            <p>{{ post.body }}</p>
+        </div>
+    </div>
+
+    <div class = "row justify-content-center mt-3 mb-5">
+        <div class = "col-md-5 col-sm-12">
+            <form method = "POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class = "d-grid gap-2">
+                    <button class="btn btn-outline-primary">Submit Comment &raquo;</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% for comment in comments %}
+    <div class = "row justify-content-center mt-3 mb-5">
+        <div class = "col-md-5 col-sm-12 border-bottom">
+            <p><strong>{{ comment.author }}</strong> {{ comment.created_on }}<br>
+            {% if request.user == comment.author %}
+                <a class="fas fa-trash" href = "{% url 'comment-delete' post.pk comment.pk %}" style = "text-decoration: none; color: #296efd;"></a>
+            {% endif %}
+            </p>
+            <p>{{ comment.comment }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
