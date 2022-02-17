@@ -64,17 +64,32 @@
         </div>
     
         {% for post in posts %}
-        <div class = "row justify-content-center mt-5">
-            <div class = "col-md-8 col-sm-12 border-bottom position-relative">
-                <p>@<strong>{{ post.author }}</strong> {{ post.created_on }}<br>
-                    {% if request.user == post.author %}
-                        <a class="fas fa-edit" href = "{% url 'post-edit' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
-                        <a class="fas fa-trash" href = "{% url 'post-delete' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
-                    {% endif %}
-                        <a class = "fas fa-comment" href = "{% url 'post-detail' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
-                </p> 
-                
+        <div class = "row justify-content-center mt-3">
+            <div class = "col-md-8 col-sm-12 border-bottom">
+                {% if request.user == post.author %}
+                    <p>@<strong>{{ post.author }}</strong></a>
+                    <a class="fas fa-edit" href = "{% url 'post-edit' post.pk %}" style = "text-decoration: none; color: #296efd; padding-left: 1%;"></a>
+                    <a class="fas fa-trash" href = "{% url 'post-delete' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
+                    <br>{{ post.created_on }}
+                {% else %}
+                <p><a style = "text-decoration: none; margin-right: 1%; color: 296efd;" href = "{% url 'profile' post.author.profile.pk %}">@<strong>{{ post.author }}</strong></a><br>{{ post.created_on }}
+                {% endif %}
+                <div class = "d-flex flex-row">
+                    <form method = "POST" action = "{% url 'like' post.pk %}">
+                        {% csrf_token %}
+                        <input type = "hidden" name = "next" value = "{{ request.path }}">
+                        <button class = "fas fa-thumbs-up" style = "background-color: transparent; border: none; box-shadow: none; color: #296efd;"></button>
+                        <strong>{{ post.likes.all.count }}</strong>
+                    </form>
+                    <form method = "POST" action = "{% url 'dislike' post.pk %}" style = "padding-left: 1%;">
+                        {% csrf_token %}
+                        <input type = "hidden" name = "next" value = "{{ request.path }}">
+                        <button class = "fas fa-thumbs-down" style = "background-color: transparent; border: none; box-shadow: none; color: #296efd;"></button>
+                        <strong>{{ post.dislikes.all.count }}</strong>
+                    </form>
+                </div>
                 <p>{{ post.body }}</p>
+                <a class = "fas fa-comment" href = "{% url 'post-detail' post.pk %}" style = "text-decoration: none; color: #296efd;"></a></p>
             </div>
         </div>
         {% endfor %}

@@ -4,6 +4,7 @@ from re import template
 from django.shortcuts import render, redirect
 from django.views import View
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from .models import Post, Comment, UserProfile
 from .forms import PostForm, CommentForm
@@ -162,3 +163,61 @@ class RemoveFollower(LoginRequiredMixin, View):
         profile.followers.remove(request.user)
 
         return redirect('profile', pk = profile.pk)
+
+class Like(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        post = Post.objects.get(pk = pk)
+
+        is_dislike = False
+
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+        
+        if is_dislike:
+            post.dislikes.remove(request.user)
+
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+        
+        if is_like:
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
+class Dislike(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        post = Post.objects.get(pk = pk)
+
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+        
+        if is_like:
+            post.likes.remove(request.user)
+
+        is_dislike = False
+
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+        
+        if is_dislike:
+            post.dislikes.remove(request.user)
+        else:
+            post.dislikes.add(request.user)
+        
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
