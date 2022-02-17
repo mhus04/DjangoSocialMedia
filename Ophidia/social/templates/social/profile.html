@@ -1,0 +1,73 @@
+{% extends 'homepage/base.html'%}
+
+{% block content %}
+{% if profile.name %}
+<div class = "container">
+    <div class = "row mt-5">
+        <div class = "col-md-3 col-sm-6">
+            <a href = '{% url "post-list" %}' class = 'btn btn-outline-primary'>Back to Feed</a>
+        </div>
+    </div>
+
+    <div class = "row justify-content-center mt-5">
+        <div class="p-3 mb-4 bg-light col-md-8 col-sm-12 shadow-sm px-5 pt-3" style = "border-radius: 3%;">
+            <div class="container-fluid py-5">
+              <img src = '{{ profile.picture.url }}' class = 'rounded-circle shadow-sm' width = '15%' height = '15%'></img>
+              <h1 class="display-5 fw-bold mt-3">{{ profile.name }}
+                  <span>
+                      {% if request.user == user %}
+                        <a href = '{% url "profile-edit" profile.pk %}' class = 'fas fa-edit' style = 'color: #296efd; text-decoration: none; margin-left: 1%;'></a>
+                      {% endif %}
+                  </span>
+              </h1>
+              {% if profile.location %}
+              <strong>Location:</strong> {{ profile.location }}
+              <br>
+              {% endif %}
+              
+              {% if profile.birth_date %}
+              <strong>Date of Birth:</strong> Date of Birth: {{ profile.birth_date }}
+              <br><br>
+              {% endif %}
+              
+              {% if profile.bio %}
+              <strong>Profile Bio:</strong> {{ profile.bio }}
+              <br>
+              {% endif %}
+              
+              {% if request.user != user %}
+              <button class="btn btn-outline-primary mt-4" type="button">Follow</button>
+              {% endif %}
+            </div>
+        </div>
+
+    
+    <div style = "margin-bottom: 10%;">
+        <div class = "row justify-content-center mt-5">
+            <div class = "col-md-8 col-sm-12 border-bottom position-relative">
+                <h1 class="display-5 fw-bold mt-3">Post History:</h1>
+            </div>
+        </div>
+    
+        {% for post in posts %}
+        <div class = "row justify-content-center mt-5">
+            <div class = "col-md-8 col-sm-12 border-bottom position-relative">
+                <p><strong>{{ post.author }}</strong> {{ post.created_on }}<br>
+                    {% if request.user == post.author %}
+                        <a class="fas fa-edit" href = "{% url 'post-edit' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
+                        <a class="fas fa-trash" href = "{% url 'post-delete' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
+                    {% endif %}
+                        <a class = "fas fa-comment" href = "{% url 'post-detail' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
+                </p> 
+                
+                <p>{{ post.body }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+{% else %}
+<meta http-equiv="refresh" content="0; url = {% url 'profile-edit' user.profile.pk %}" />
+{% endif %}
+{% endblock content %}

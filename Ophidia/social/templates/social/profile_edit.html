@@ -1,0 +1,40 @@
+{% extends 'homepage/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if user.profile.name %}
+<div class = "container">
+    <div class = "row mt-5">
+        <div class = "col-md-5 col-sm-6">
+            <a class = "btn btn-outline-primary" href = "{% url 'profile' object.pk %}">Back to Profile</a>
+        </div>
+    </div>
+{% else %}
+<div class = "container">
+    <div class = "row justify-content-center mt-3">
+        <div class = "col-md-5 col-sm-23">
+            <div class = "alert alert-danger" role = "alert" style = "margin-top: 7%;">
+                'Name' field <strong>must</strong> be filled in
+            </div>
+        </div>
+    </div>
+{% endif %}
+    <div class = "row justify-content-center mt-3">
+        <div class = "col-md-5 col-sm-23 border-bottom">
+            <h5>Update your Profile</h5>
+        </div>
+    </div>
+
+    <div class = "row justify-content-center mt-3 mb-5">
+        <div class = "col-md-5 col-sm-23 border-bottom">
+            <form method = "POST" enctype = "multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class = "d-grid gap-2">
+                    <button class="btn btn-outline-primary">Edit Profile &raquo;</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
