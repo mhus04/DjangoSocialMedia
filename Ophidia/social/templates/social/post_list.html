@@ -25,11 +25,13 @@
     {% for post in post_list %}
     <div class = "row justify-content-center mt-3">
         <div class = "col-md-5 col-sm-23 border-bottom">
-            <p><strong>{{ post.author }}</strong> {{ post.created_on }}<br>
-                {% if request.user == post.author %}
+            {% if request.user == post.author %}
+                <p>@<strong>{{ post.author }}</strong></a> {{ post.created_on }}<br>
                     <a class="fas fa-edit" href = "{% url 'post-edit' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
                     <a class="fas fa-trash" href = "{% url 'post-delete' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
-                {% endif %}
+            {% else %}
+            <p><a style = "text-decoration: none; margin-right: 1%; color: 296efd;" href = "{% url 'profile' post.author.profile.pk %}">@<strong>{{ post.author }}</strong></a> {{ post.created_on }}<br>
+            {% endif %}
                     <a class = "fas fa-comment" href = "{% url 'post-detail' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
             </p>
             

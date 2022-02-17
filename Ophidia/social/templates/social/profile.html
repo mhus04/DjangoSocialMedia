@@ -20,6 +20,7 @@
                       {% endif %}
                   </span>
               </h1>
+              <p><strong>Followers</strong>: {{number_of_followers}}</p>
               {% if profile.location %}
               <strong>Location:</strong> {{ profile.location }}
               <br>
@@ -34,11 +35,24 @@
               <strong>Profile Bio:</strong> {{ profile.bio }}
               <br>
               {% endif %}
+
               
               {% if request.user != user %}
-              <button class="btn btn-outline-primary mt-4" type="button">Follow</button>
+              {% if is_following %}
+              <form method = "POST" action = "{% url 'remove-follower' profile.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-danger mt-3" type="submit">Unfollow</button>
+              </form>
+              {% else %}
+              <form method = "POST" action = "{% url 'add-follower' profile.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-primary mt-3" type="submit">Follow</button>
+              </form>
+              {% endif %}
               {% endif %}
             </div>
+
+            
         </div>
 
     
@@ -52,7 +66,7 @@
         {% for post in posts %}
         <div class = "row justify-content-center mt-5">
             <div class = "col-md-8 col-sm-12 border-bottom position-relative">
-                <p><strong>{{ post.author }}</strong> {{ post.created_on }}<br>
+                <p>@<strong>{{ post.author }}</strong> {{ post.created_on }}<br>
                     {% if request.user == post.author %}
                         <a class="fas fa-edit" href = "{% url 'post-edit' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
                         <a class="fas fa-trash" href = "{% url 'post-delete' post.pk %}" style = "text-decoration: none; color: #296efd;"></a>
