@@ -12,7 +12,7 @@ This document is intended for inexperienced users. Ensure that you have installe
 </ul>
 
 <h1>Initiating a Local Testing Server</h1>
-After installing the following dependencies, clone the repository using by entering this command in the command prompt/terminal:
+After installing the following dependencies, clone the repository by entering this command in the command prompt/terminal:
 <br>
 
 ```$ git clone https://github.com/mhus04/DjangoSocialMedia.git```
