@@ -2,8 +2,8 @@
 {% if user.is_authenticated %}
 {% if user.profile.name %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#" style = "margin-left: 5%;">
-      <img src="{% static 'images/logo.png' %}" width="30" height="30" alt="" style = "margin-left: 1%;">
+    <a class="navbar-brand" href = "{% url 'post-list' %}" style = "margin-left: 5%;">
+      <img src="{% static 'images/logo.png' %}" width="30" height="30" alt="" style = "margin-left: 1%;" >
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -18,10 +18,10 @@
           </li>
       </ul>
     </div>
-      <form class = "d-flex">
+      <form class = "d-flex"  method = "GET" action = "{% url 'profile-search' %}">
         <div class="input-group">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <span class = "input-group-text" id = "basic-addon1">@</span>
+            <input type="text" class = "form-control" placeholder = "Username" aria-label = "Username" aria-describedby="basic-addon1" name = "query" value = "{{ request.GET.query }}" required minlength="1">
         </div>
       </form>
       <div class="nav-item dropdown" style = "margin-right: 4%;">

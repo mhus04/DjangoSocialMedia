@@ -1,5 +1,6 @@
 from ast import Num
 from dataclasses import fields
+from multiprocessing import context
 from re import template
 from django.shortcuts import render, redirect
 from django.views import View
@@ -9,6 +10,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from .models import Post, Comment, UserProfile
 from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
+from django.db.models import Q
 
 class PostListView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
@@ -221,3 +223,17 @@ class Dislike(LoginRequiredMixin, View):
         
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
+
+class UserSearch(View):
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get('query')
+        profile_list = UserProfile.objects.filter(
+            Q(user__username__icontains = query)
+        )
+
+        context = {
+            'profile_list' : profile_list,
+            'query' : query,
+        }
+
+        return render(request, 'social/search.html', context)
