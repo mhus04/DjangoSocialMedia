@@ -1,0 +1,26 @@
+{% extends 'homepage/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class = "container">
+    <div class = "row mt-5">
+        <div class = "col-md-5 col-sm-6">
+            <a class = "btn btn-outline-primary" href = "{% url 'inbox' %}">Back to Inbox</a>
+        </div>
+    </div>
+
+    <div class = "row justify-content-center mt-3 mb-5">
+        <div class = "col-md-6 col-sm-12" style = "margin-top: 12%;">
+            <form method = "POST">
+                {% csrf_token %}
+                <h1 style = "text-align: center;">Start a new message thread</h1>
+                <p style = "text-align: center;">Enter the <strong>exact</strong> username for the person you would like to start a conversation with</p>
+                {{ form | crispy }}
+                <div class = "d-grid gap-2">
+                    <button class = "btn btn-outline-primary mt-1" type = "submit">Continue &raquo;</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

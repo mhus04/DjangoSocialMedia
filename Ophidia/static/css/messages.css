@@ -1,0 +1,22 @@
+.empty-text{
+    color: #777;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .received-message {
+    background-color: #eeeeee;
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: 25%;
+  }
+  
+  .sent-message{
+    background-color: #526ccc;
+    color:#fff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: 25%;
+    float: right;
+  }
+  

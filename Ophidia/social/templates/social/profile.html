@@ -92,10 +92,12 @@
                 <a class = "fas fa-comment" href = "{% url 'post-detail' post.pk %}" style = "text-decoration: none; color: #296efd;"></a></p>
             </div>
         </div>
-        {% endfor %}
+        {% endfor %} 
     </div>
-    
 </div>
+
+
+
 {% else %}
 <meta http-equiv="refresh" content="0; url = {% url 'profile-edit' user.profile.pk %}" />
 {% endif %}
