@@ -41,6 +41,7 @@ def save_user_profile(sender, instance, **kwargs):
 class ThreadModel(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "+")
     receiver = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "+")
+    name = models.CharField(max_length = 30, blank = True, null = True)
 
 class MessageModel(models.Model):
     thread = models.ForeignKey('ThreadModel', related_name = "+", on_delete = models.CASCADE, blank = True, null = True)

@@ -1,6 +1,7 @@
 from ast import Num
 from dataclasses import fields
 from multiprocessing import context
+from operator import truediv
 from re import template
 from django.dispatch import receiver
 from django.shortcuts import render, redirect
@@ -314,3 +315,19 @@ class CreateMessage(View):
 
         message.save()
         return redirect('thread', pk = pk)
+
+class ThreadEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = ThreadModel
+    fields = ['name']
+    template_name = 'social/thread_edit.html'
+
+    def get_success_url(self):
+        pk = self.kwargs['pk']
+        return reverse_lazy('thread', kwargs = {'pk' : pk})
+
+    def test_func(self):
+        thread = self.get_object()
+        if self.request.user == thread.user or self.request.user == thread.receiver:
+            return True
+        else:
+            return False

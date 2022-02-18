@@ -15,7 +15,14 @@
     
     <div class = "row justify-content-center mt-2">
         <div class = "col-md-12 border-bottom position-relative">
-            <h1 class="display-5 fw-bold mt-3">{{ thread.user }} - {{ thread.receiver }}</h1>
+            <h1 class="display-5 fw-bold mt-3">
+                {% if thread.name %}
+                    {{ thread.name }}
+                {% else %}
+                    {{ thread.user }} - {{ thread.receiver }}
+                {% endif %}
+                <a href = "{% url 'thread-edit' thread.pk %}" class = 'fas fa-edit' style = 'color: #296efd; text-decoration: none; margin-left: 1%;'></a>
+            </h1>
         </div>
     </div>
 

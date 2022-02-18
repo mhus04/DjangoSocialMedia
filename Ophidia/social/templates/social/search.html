@@ -9,7 +9,7 @@
     {% for profile in profile_list %}
     <div class = "row justify-content-center mt-3">
         <div class = "col-md-5 col-sm-12 border-bottom position-relative">
-            <p><a style = "text-decoration: none; margin-right: 1%; color: 296efd;" href = "{% url 'profile' profile.pk %}">@<strong>{{ profile.user }}</strong></a><a class = "fa fa-commenting" style = "text-decoration: none; color: #296efd; margin-left: 1%;" href = "{% url 'inbox' %}"></a></p>
+            <p><a style = "text-decoration: none; margin-right: 1%; color: 296efd;" href = "{% url 'profile' profile.pk %}">@<strong>{{ profile.user }}</strong></a></p>
             <p><strong>Name:</strong> {{profile.name}}<br>
             <strong>Followers:</strong> {{ profile.followers.all.count }}
             {% if profile.location %}
