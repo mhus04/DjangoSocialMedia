@@ -67,12 +67,12 @@
         <div class = "row justify-content-center mt-3">
             <div class = "col-md-8 col-sm-12 border-bottom">
                 {% if request.user == post.author %}
-                    <p>@<strong>{{ post.author }}</strong></a>
+                    <p>@<strong>{{ post.author }}</strong>
                     <a class="fas fa-edit" href = "{% url 'post-edit' post.pk %}" style = "text-decoration: none; color: #526ccc; padding-left: 1%;"></a>
                     <a class="fas fa-trash" href = "{% url 'post-delete' post.pk %}" style = "text-decoration: none; color: #526ccc;"></a>
-                    <br>{{ post.created_on }}
+                    <br>{{ post.created_on }}</p>
                 {% else %}
-                <p><a style = "text-decoration: none; margin-right: 1%; color: 526ccc;" href = "{% url 'profile' post.author.profile.pk %}">@<strong>{{ post.author }}</strong></a><br>{{ post.created_on }}
+                <p>@<strong>{{ post.author }}</strong><br>{{ post.created_on }}</p>
                 {% endif %}
                 <div class = "d-flex flex-row">
                     <form method = "POST" action = "{% url 'like' post.pk %}">

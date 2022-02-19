@@ -12,7 +12,7 @@
     <div class = "row justify-content-center mt-3">
         <div class = "col-md-6 col-sm-23 border-bottom">
             {% if request.user == post.author %}
-                <p style = "color: #526ccc;">@<strong>{{ post.author }}</strong></a>
+                <p>@<strong>{{ post.author }}</strong></a>
                 <a class="fas fa-edit" href = "{% url 'post-edit' post.pk %}" style = "text-decoration: none; color: #526ccc; padding-left: 1%;"></a>
                 <a class="fas fa-trash" href = "{% url 'post-delete' post.pk %}" style = "text-decoration: none; color: #526ccc;"></a>
                 <br>{{ post.created_on }}
@@ -56,7 +56,7 @@
                 <a class="fas fa-trash" href = "{% url 'comment-delete' post.pk comment.pk %}" style = "text-decoration: none; color: #526ccc; padding-left: 1%;"></a>
                 <br>{{ comment.created_on }}
             {% else %}
-            <p><a style = "text-decoration: none; margin-right: 1%; color: 526ccc;" href = "{% url 'profile' post.author.profile.pk %}">@<strong>{{ comment.author }}</strong></a><br>{{ comment.created_on }}
+            <p><a style = "text-decoration: none; margin-right: 1%; color: #526ccc;" href = "{% url 'profile' comment.author.profile.pk %}">@<strong>{{ comment.author }}</strong></a><br>{{ comment.created_on }}
             {% endif %}
             <p>{{ comment.comment }}</p>
         </div>
