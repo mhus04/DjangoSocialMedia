@@ -2,13 +2,13 @@
 {% block content %}
 <div class = "container mb-5">
     <div class = "row justify-content-center mt-3">
-        <div class = "col-md-5 col-sm-23 border-bottom">
+        <div class = "col-md-6 col-sm-23 border-bottom">
             <h1 class="display-5 fw-bold mt-3">Inbox</h1>
         </div>
     </div>
 
     <div class = "row justify-content-center mt-3 mb-5">
-        <div class = "col-md-5 col-sm-23">
+        <div class = "col-md-6 col-sm-23">
             <form method = "GET" action = "{% url 'create-thread' %}">
                 <div class = "d-grid gap-2">
                     <button class = "btn btn-outline-primary" type = "submit">Start a new message thread &raquo;</button>
@@ -19,7 +19,7 @@
 
     {% for thread in threads.all %}
     <div class = "row justify-content-center mt-3">
-        <div class = "col-md-5 col-sm-23 border-bottom">
+        <div class = "col-md-6 col-sm-23 border-bottom">
             <p><strong>
                 {% if thread.name %}
                 {{ thread.name }}
