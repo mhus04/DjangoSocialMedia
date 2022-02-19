@@ -24,9 +24,9 @@
             <input type="text" class = "form-control" placeholder = "Username" aria-label = "Username" aria-describedby="basic-addon1" name = "query" value = "{{ request.GET.query }}" required minlength="1">
         </div>
       </form>
-      <div class = "nav item"><a class = "fa fa-commenting" href = "{% url 'inbox' %}" style = "text-decoration: none; color: black; margin-left: 100%;"></a></div>
+      <div class = "nav item"><a class = "fa fa-commenting" href = "{% url 'inbox' %}" style = "text-decoration: none; color: #526ccc; margin-left: 100%;"></a></div>
       <div class="nav-item dropdown" style = "margin-left: 1%; margin-right: 4%;">
-        <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user"></i></a>
+        <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user" style = "color: #526ccc;"></i></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="{% url 'profile' user.profile.pk %}">Profile</a></li>
           <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a></li>

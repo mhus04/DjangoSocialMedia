@@ -3,7 +3,7 @@
 <div class = "container mb-5">
     <div class = "row justify-content-center mt-3">
         <div class = "col-md-5 col-sm-23 border-bottom">
-            <h5>Inbox</h5>
+            <h1 class="display-5 fw-bold mt-3">Inbox</h1>
         </div>
     </div>
 
@@ -11,7 +11,7 @@
         <div class = "col-md-5 col-sm-23">
             <form method = "GET" action = "{% url 'create-thread' %}">
                 <div class = "d-grid gap-2">
-                    <button class = "btn btn-outline-primary" type = "submit">Create a new message thread &raquo;</button>
+                    <button class = "btn btn-outline-primary" type = "submit">Start a new message thread &raquo;</button>
                 </div>
             </form>
         </div>
@@ -27,7 +27,7 @@
                 {{ thread.user }} - {{ thread.receiver }}
                 {% endif %}
             </strong></a>
-            <a class = "fa fa-commenting" style = "color: #296efd; text-decoration: none; margin-left: 1%;" href = "{% url 'thread' thread.pk %}"></a>
+            <a class = "fa fa-commenting" style = "color: #526ccc; text-decoration: none; margin-left: 1%;" href = "{% url 'thread' thread.pk %}"></a>
         </div>
     </div>
     {% endfor %}

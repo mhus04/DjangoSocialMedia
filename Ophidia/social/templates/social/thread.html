@@ -21,7 +21,7 @@
                 {% else %}
                     {{ thread.user }} - {{ thread.receiver }}
                 {% endif %}
-                <a href = "{% url 'thread-edit' thread.pk %}" class = 'fas fa-edit' style = 'color: #296efd; text-decoration: none; margin-left: 1%;'></a>
+                <a href = "{% url 'thread-edit' thread.pk %}" class = 'fas fa-edit' style = 'color: #526ccc; text-decoration: none; margin-left: 1%;'></a>
             </h1>
         </div>
     </div>
@@ -30,9 +30,9 @@
         <div class = "card col-md-12 mt-5 p-3 shadow-sm bg-light">
             <div class = "card col-md-12 p-3 mb-3">
                 {% if thread.receiver == request.user %}
-                <h5 style = "text-align: center;"><a style = "text-decoration: none; margin-right: 1%; color: 296efd;" href = "{% url 'profile' thread.user.profile.pk %}">@<strong>{{ thread.user }}</strong></a></h5>
+                <h5 style = "text-align: center;"><a style = "text-decoration: none; margin-right: 1%; color: #526ccc;" href = "{% url 'profile' thread.user.profile.pk %}">@<strong>{{ thread.user }}</strong></a></h5>
                 {% else %}
-                <h5 style = "text-align: center;"><a style = "text-decoration: none; margin-right: 1%; color: 296efd;" href = "{% url 'profile' thread.receiver.profile.pk %}">@<strong>{{ thread.receiver }}</strong></a></h5>
+                <h5 style = "text-align: center;"><a style = "text-decoration: none; margin-right: 1%; color: #526ccc;" href = "{% url 'profile' thread.receiver.profile.pk %}">@<strong>{{ thread.receiver }}</strong></a></h5>
 
                 {% endif %}
             </div>
