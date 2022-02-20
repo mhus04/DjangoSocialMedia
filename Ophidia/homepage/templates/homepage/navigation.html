@@ -1,9 +1,9 @@
 {% load static %}
 {% if user.is_authenticated %}
 {% if user.profile.name %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href = "{% url 'post-list' %}" style = "margin-left: 5%;">
-      <img src="{% static 'images/logo.png' %}" width="30" height="30" alt="" style = "margin-left: 1%;" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style = "padding-left: 10%; padding-right: 10%;">
+    <a class="navbar-brand" href = "{% url 'post-list' %}">
+      <img src="{% static 'images/logo.png' %}" width="30" height="30" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,7 @@
         </div>
       </form>
       <div class = "nav item"><a class = "fa fa-commenting" href = "{% url 'inbox' %}" style = "text-decoration: none; color: #526ccc; margin-left: 100%;"></a></div>
-      <div class="nav-item dropdown" style = "margin-left: 1%; margin-right: 4%;">
+      <div class="nav-item dropdown" style = "margin-left: 1%;">
         <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user" style = "color: #526ccc;"></i></a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="{% url 'profile' request.user.profile.pk %}">Profile</a></li>
